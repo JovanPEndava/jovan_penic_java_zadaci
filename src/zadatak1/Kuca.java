@@ -6,11 +6,14 @@ public class Kuca extends Nekretnina {
 
     public Kuca(String adresa, int zona, double kvadratura, Vlasnik vlasnik, double povrsinaOkucnice) {
         super(adresa, zona, kvadratura, vlasnik);
-        if (povrsinaOkucnice >= 0) {
-            this.povrsinaOkucnice = povrsinaOkucnice;
-        } else {
-            System.out.println("Greska, niste pravilno uneli podatke.");
-        }
+
+            if (povrsinaOkucnice >= 0)  {
+                this.povrsinaOkucnice = povrsinaOkucnice;
+            } else {
+                throw new IllegalArgumentException("Povrsina okucnice mora biti 0 ako ne postoji, ili veca od 0!");
+            }
+
+
     }
 
     @Override
@@ -25,11 +28,21 @@ public class Kuca extends Nekretnina {
 
     @Override
     public String toString() {
-        return "Adresa kuce je: " + adresa + ". Zona je: " + zona + ". Kvadratura kuce je: " + kvadratura
-                + ". Cena kuce je: " + izracunajCenu()+ " Eura. "+ vlasnik;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Adresa kuce je: ");
+        sb.append(adresa);
+        sb.append(". Zona je: ");
+        sb.append(zona);
+        sb.append(". Kvadratura kuce je: ");
+        sb.append(kvadratura);
+        sb.append(" m2. Cena kuce je: ");
+        sb.append(izracunajCenu());
+        sb.append(" Eura.     \n");
+        if (vlasnik != null) {
+            sb.append(vlasnik);
+        }
+        return  sb.toString();
     }
-    /* Metoda toString je mogla da se napise i u klasi Nekretnina, pa da se na opet Override-uje u izvedenim klasama, ali sam zeleo
-       da umesto generickih izraza  (Adresa objekta:...   Kvadratura objekta:...), bas pise Adresa kuce:... i Adresa stana:...
-     */
+
 
 }

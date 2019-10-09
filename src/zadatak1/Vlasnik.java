@@ -7,41 +7,38 @@ public class Vlasnik {
     private String brojLicneKarte;
 
     public Vlasnik(String imePrezime, String jmbg, String brojLicneKarte) {
-        try {
-            this.imePrezime = imePrezime;
-            this.jmbg = jmbg;
-            this.brojLicneKarte = brojLicneKarte;
-        } catch (Exception e){
-            System.out.println("Niste uneli pravilno podatke o vlasniku");
-        }
+
+            if (!imePrezime.isEmpty() && ! imePrezime.matches("(.*)[!@#$%^&*(){};:',.<>?/`~\\d](.*)")) {
+                this.imePrezime = imePrezime;
+            } else {
+                throw new IllegalArgumentException("Greska pri unosu imena i prezimena vlasnika.");
+            }
+
+
+            if (jmbg.length() == 13 && !(jmbg.matches("(.*)\\D(.*)"))) {
+                this.jmbg = jmbg;
+            } else {
+                throw new IllegalArgumentException("Uneti JMBG mora imati 13 cifara.");
+            }
+
+            if (brojLicneKarte.length() == 9 && !(brojLicneKarte.matches("(.*)\\D(.*)"))) {
+                this.brojLicneKarte = brojLicneKarte;
+            } else {
+                throw new IllegalArgumentException("Uneti broj licne karte mora imati 9 cifara.");
+            }
+
     }
 
-    public String getImePrezime() {
-        return imePrezime;
-    }
-
-    public void setImePrezime(String imePrezime) {
-        this.imePrezime = imePrezime;
-    }
-
-    public String getJmbg() {
-        return jmbg;
-    }
-
-    public void setJmbg(String jmbg) {
-        this.jmbg = jmbg;
-    }
-
-    public String getBrojLicneKarte() {
-        return brojLicneKarte;
-    }
-
-    public void setBrojLicneKarte(String brojLicneKarte) {
-        this.brojLicneKarte = brojLicneKarte;
-    }
 
     @Override
     public String toString() {
-        return "Ime i prezime vlasnika: " + imePrezime + ". JMBG: " + jmbg + ". Broj licne karte: " + brojLicneKarte;
+        StringBuilder sb1 = new StringBuilder();
+        sb1.append("Ime i prezime vlasnika: ");
+        sb1.append(imePrezime);
+        sb1.append(". JMBG: ");
+        sb1.append(jmbg);
+        sb1.append(". Broj licne karte: ");
+        sb1.append(brojLicneKarte);
+        return  sb1.toString();
     }
 }

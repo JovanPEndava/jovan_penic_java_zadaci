@@ -7,12 +7,18 @@ public class Stan extends Nekretnina {
 
     public Stan(String adresa, int zona, double kvadratura, Vlasnik vlasnik, double povrsinaPodruma, double povrsinaTerase) {
         super(adresa, zona, kvadratura, vlasnik);
-        if (povrsinaPodruma >= 0) {
-            this.povrsinaPodruma = povrsinaPodruma;
-            this.povrsinaTerase = povrsinaTerase;
-        } else {
-            System.out.println("Greska, niste pravilno uneli podatke.");
-        }
+
+            if (povrsinaPodruma >= 0) {
+                this.povrsinaPodruma = povrsinaPodruma;
+            } else {
+                throw new IllegalArgumentException("Povrsina podruma mora biti 0 ako ne postoji, ili veca od 0!");
+            }
+            if (povrsinaTerase >= 0) {
+                this.povrsinaTerase = povrsinaTerase;
+            } else {
+                throw new IllegalArgumentException("Povrsina terase mora biti 0 ako ne postoji, ili veca od 0!");
+            }
+
     }
 
     @Override
@@ -27,7 +33,19 @@ public class Stan extends Nekretnina {
 
     @Override
     public String toString() {
-        return "Adresa stana je: " + adresa + ". Zona je: " + zona + ". Kvadratura stana je: " + kvadratura
-                + ". Cena stana je: " + izracunajCenu() + " Eura. " + vlasnik;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Adresa stana je: ");
+        sb.append(adresa);
+        sb.append(". Zona je: ");
+        sb.append(zona);
+        sb.append(". Kvadratura stana je: ");
+        sb.append(kvadratura);
+        sb.append(" m2. Cena stana je: ");
+        sb.append(izracunajCenu());
+        sb.append(" Eura.     \n");
+        if (vlasnik != null) {
+            sb.append(vlasnik);
+        }
+        return  sb.toString();
     }
 }

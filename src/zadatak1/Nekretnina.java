@@ -8,18 +8,34 @@ public abstract class Nekretnina {
     protected int zona;
     protected double kvadratura;
     protected Vlasnik vlasnik;
-    //Ovde sam stavio protected atribute, jer sam zeleo da se vide u celom paketu, a to je potrebno zato sto sam ih stavio da budu ulazni parametri metoda, koje koristim u izvedenim klasama (npr u metodi izracunajCenu)
+    static final String GRESKA = "Greska, niste pravilno uneli podatke.";
+
 
     public Nekretnina(String adresa, int zona, double kvadratura, Vlasnik vlasnik) {
-        if (kvadratura > 0 && zona >= 1 && zona <= 4) {
-            this.adresa = adresa;
-            this.zona = zona;
-            this.kvadratura = kvadratura;
+
+            if (kvadratura > 0) {
+                this.kvadratura = kvadratura;
+            } else {
+                throw new IllegalArgumentException("Kvadratura mora biti veca od 0!");
+            }
+
+            if (adresa != null && !adresa.isEmpty() &&  ! adresa.matches("(.*)[!@#$%^&*(){};:',<>?`~](.*)")) {
+                this.adresa = adresa;
+            } else {
+                throw new IllegalArgumentException("Adresa nije unesena u validnom formatu!");
+            }
+
+            if (zona == 1 || zona == 2 || zona == 3 || zona == 4) {
+                this.zona = zona;
+            } else {
+                throw new IllegalArgumentException("Moguce zone su 1, 2, 3 ili 4.");
+            }
+
             this.vlasnik = vlasnik;
-        } else {
-            System.out.println("Greska, niste pravilno uneli podatke.");
-        }
+
+
     }
+
 
     public abstract double izracunajCenu();
 
@@ -35,10 +51,11 @@ public abstract class Nekretnina {
             case 4: cenaKvadrata = 500;
                 break;
             default:
-                System.out.println("Postoje samo zone 1, 2, 3 i 4");
         }
         return cenaKvadrata;
     }
+
+
 
 
 }
