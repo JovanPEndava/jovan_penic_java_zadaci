@@ -5,5 +5,6 @@ Zadatak 1
 - Cena se računa po principu kvadratura X zona (I zona 3000, II zona 2000, III zona 1000, IV zona 500 €)
 - Kuća ima dodatno polje površinaOkućnice.  U cenu kuće ulazi i cena okućnice koja se računa po principu (površinaOkućnice X zona X 15%)
 - Stan ima dva dodatna polja , površinaPodruma i površinaTerase.  U cenu Stana ulazi i cena podruma i terase ((povrsinaPodruma+povrsinaTerase) X Zona X 33%)
-- Napraviti Main klasu i u njoj kreirati instance klase Nekretnina i napraviti objekte izvedenih klasa sa proizvoljnim argumentima. - 
+- Napraviti Main klasu i u njoj kreirati instance klase Nekretnina i napraviti objekte izvedenih klasa sa proizvoljnim argumentima.  
 - Ispisati String reprezentaciju objekata – toString()
+
