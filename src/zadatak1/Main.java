@@ -17,30 +17,32 @@ package zadatak1;
 
 public class Main {
 
+    static final String GRESKA = "Greska! ";
+
     public static void main(String[] args) {
 
         Vlasnik vlasnikStana = null;
         Vlasnik vlasnikKuce = null;
 
         try {
-            vlasnikStana = new Vlasnik("Pera Peric", "0520980123122", "007575755");
+            vlasnikStana = new Vlasnik("Pera O' Perić", "0520980123122", "007575759");
         } catch (IllegalArgumentException iae1) {
-            System.out.println("Greska: " + iae1);
+            System.out.println(GRESKA + iae1.getMessage());
         }
 
 
         try {
-            vlasnikKuce = new Vlasnik("Zika Zikic", "1206974123123", "007575565");
+            vlasnikKuce = new Vlasnik("Žika-Van Žikić", "1206974123123", "007575565");
         } catch (IllegalArgumentException iae2) {
-            System.out.println("Greska: " + iae2);
+            System.out.println(GRESKA + iae2.getMessage());
         }
 
 
         try {
-            Nekretnina stan = new Stan("Kosovska br. 8", 3, 70.5, vlasnikStana, 10.1, 15.4);
+            Nekretnina stan = new Stan("Kosovska br. 8/2", 3, 70.5, vlasnikStana, 10.1, 15.4);
             System.out.println(stan.toString());
         } catch (IllegalArgumentException iae) {
-            System.out.println("Greska: " + iae);
+            System.out.println(GRESKA + iae.getMessage());
         }
 
         System.out.println("=============================================================================================");
@@ -50,7 +52,7 @@ public class Main {
 
             System.out.println(kuca.toString());
         } catch (IllegalArgumentException iae) {
-            System.out.println("Greska: " + iae);
+            System.out.println(GRESKA + iae.getMessage());
         }
 
 

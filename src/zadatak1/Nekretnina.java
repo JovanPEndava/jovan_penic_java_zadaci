@@ -1,5 +1,3 @@
-// Author: Jovan Penic
-
 package zadatak1;
 
 public abstract class Nekretnina {
@@ -8,7 +6,7 @@ public abstract class Nekretnina {
     protected int zona;
     protected double kvadratura;
     protected Vlasnik vlasnik;
-    static final String GRESKA = "Greska, niste pravilno uneli podatke.";
+    static final String REGEX_ADRESA = "^[a-zA-Z0-9'\\.\\ŽžČčĆćŠšĐđ\\/\\-\\s]+$";
 
 
     public Nekretnina(String adresa, int zona, double kvadratura, Vlasnik vlasnik) {
@@ -19,7 +17,7 @@ public abstract class Nekretnina {
                 throw new IllegalArgumentException("Kvadratura mora biti veca od 0!");
             }
 
-            if (adresa != null && !adresa.isEmpty() &&  ! adresa.matches("(.*)[!@#$%^&*(){};:',<>?`~](.*)")) {
+            if (adresa != null && !adresa.isEmpty() &&   adresa.matches(REGEX_ADRESA)) {
                 this.adresa = adresa;
             } else {
                 throw new IllegalArgumentException("Adresa nije unesena u validnom formatu!");
@@ -31,7 +29,9 @@ public abstract class Nekretnina {
                 throw new IllegalArgumentException("Moguce zone su 1, 2, 3 ili 4.");
             }
 
-            this.vlasnik = vlasnik;
+            if (vlasnik != null) {
+                this.vlasnik = vlasnik;
+            }
 
 
     }

@@ -33,19 +33,13 @@ public class Stan extends Nekretnina {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Adresa stana je: ");
-        sb.append(adresa);
-        sb.append(". Zona je: ");
-        sb.append(zona);
-        sb.append(". Kvadratura stana je: ");
-        sb.append(kvadratura);
-        sb.append(" m2. Cena stana je: ");
-        sb.append(izracunajCenu());
-        sb.append(" Eura.     \n");
         if (vlasnik != null) {
-            sb.append(vlasnik);
+            return new StringBuilder("Adresa stana je: " + adresa + ". Zona je: " + zona + ". Kvadratura stana je: " + kvadratura +
+                    " m2. Cena stana je: " + izracunajCenu() + " Eura.     \n" + vlasnik).toString();
+        } else {
+            return new StringBuilder("Adresa stana je: " + adresa + ". Zona je: " + zona + ". Kvadratura stana je: " + kvadratura +
+                    " m2. Cena stana je: " + izracunajCenu() + " Eura.").toString();
         }
-        return  sb.toString();
+
     }
 }
