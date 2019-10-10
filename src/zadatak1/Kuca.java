@@ -32,8 +32,7 @@ public class Kuca extends Nekretnina {
             return new StringBuilder("Adresa kuce je: " + adresa + ". Zona je: " + zona + ". Kvadratura kuce je: " + kvadratura +
                     " m2. Cena kuce je: " + izracunajCenu() + " Eura.     \n" + vlasnik).toString();
         } else {
-            return new StringBuilder("Adresa kuce je: " + adresa + ". Zona je: " + zona + ". Kvadratura kuce je: " + kvadratura +
-                    " m2. Cena kuce je: " + izracunajCenu() + " Eura.").toString();
+            throw new IllegalArgumentException("Ponoviti unos vlasnika kuce!");
         }
 
     }

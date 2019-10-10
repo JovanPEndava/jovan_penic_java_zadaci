@@ -37,8 +37,7 @@ public class Stan extends Nekretnina {
             return new StringBuilder("Adresa stana je: " + adresa + ". Zona je: " + zona + ". Kvadratura stana je: " + kvadratura +
                     " m2. Cena stana je: " + izracunajCenu() + " Eura.     \n" + vlasnik).toString();
         } else {
-            return new StringBuilder("Adresa stana je: " + adresa + ". Zona je: " + zona + ". Kvadratura stana je: " + kvadratura +
-                    " m2. Cena stana je: " + izracunajCenu() + " Eura.").toString();
+            throw new IllegalArgumentException("Ponoviti unos vlasnika stana!");
         }
 
     }
